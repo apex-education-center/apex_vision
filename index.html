@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apex Education Center</title>
     <link rel="stylesheet" href="styles.css">
     <script src="script.js" defer></script>
@@ -13,7 +13,79 @@
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             color: #333;
+            overflow-x: hidden;
         }
+
+        /* Navigation Styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            background-color: #333;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: transform 0.3s ease-in-out;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .navbar.hidden {
+            transform: translateY(-100%);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo {
+            height: 60px;
+            width: 60px;
+            margin-right: 8px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .logo-text {
+            color: white;
+            font-size: 1.4rem;
+            font-weight: bold;
+            margin-left: -5px;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            margin: 0 15px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ff7eb3;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            color: white;
+            font-size: 24px;
+            padding: 10px;
+        }
+
+        /* Hero Section */
         .hero {
             position: relative;
             width: 100%;
@@ -26,72 +98,293 @@
             align-items: center;
             text-align: center;
             animation: fadeIn 1s ease-in-out;
+            margin-top: 60px;
+            border-radius: 0 0 50% 50% / 0 0 100px 100px;
+            overflow: hidden;
         }
+
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
+
         .hero-content {
             color: white;
             font-size: 48px;
             font-weight: bold;
             text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+            padding: 0 20px;
         }
+
+        /* Courses Section */
         .courses {
-            padding: 40px;
+            padding: 40px 20px;
             text-align: center;
             background-color: #ffffff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
+
         .course-list {
             display: flex;
-            justify-content: space-around;
+            justify-content: center;
             flex-wrap: wrap;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
+
         .course-item {
-            background: linear-gradient(45deg, #ff7eb3, #ff758c);
             padding: 20px;
-            margin: 10px;
             border-radius: 10px;
             color: white;
             transition: transform 0.3s ease-in-out;
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+            position: relative;
+            overflow: hidden;
         }
+
+        .course-item:nth-child(1) {
+            background: linear-gradient(135deg, #D62828, #A4161A);
+        }
+
+        .course-item:nth-child(2) {
+            background: linear-gradient(135deg, #F4A261, #E76F51);
+        }
+
+        .course-item:nth-child(3) {
+            background: linear-gradient(135deg, #2A9D8F, #007F5F);
+        }
+
+        .course-item:nth-child(4) {
+            background: linear-gradient(135deg, #264653, #1B3A4B);
+        }
+
         .course-item:hover {
             transform: scale(1.05);
         }
+
+        .course-item h3, .course-item p {
+            position: relative;
+            z-index: 2;
+        }
+
+        .course-item h3 {
+            margin-bottom: 15px;
+            color: white;
+            font-size: 1.4rem;
+        }
+
+        .course-item p {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+        }
+
+        /* About Section */
+        .about {
+            padding: 40px 20px;
+            background-color: #333;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .about h2 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            line-height: 1.6;
+            padding: 0 20px;
+        }
+
+        .about-content p {
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            text-align: left;
+            color: white;
+        }
+
+        .about-content strong {
+            color: #ffd700;
+        }
+
+        /* Contact Section */
         .contact {
             text-align: center;
-            padding: 40px;
+            padding: 40px 20px;
             background-color: #333;
             color: white;
         }
+
+        .contact-info {
+            margin: 20px 0;
+        }
+
+        .contact-info a {
+            color: white;
+            text-decoration: none;
+        }
+
         .whatsapp-btn {
             display: inline-block;
             background-color: #25D366;
             color: white;
-            padding: 10px 20px;
+            padding: 15px 30px;
             border-radius: 5px;
             text-decoration: none;
             font-size: 18px;
             transition: background 0.3s ease-in-out;
+            margin: 20px 0;
         }
+
         .whatsapp-btn:hover {
             background-color: #1ebe57;
         }
+
+        /* Footer */
         footer {
             padding: 20px;
             text-align: center;
             background-color: #222;
             color: white;
         }
+
         .social-links a {
             color: white;
             margin: 0 10px;
             font-size: 24px;
             transition: color 0.3s ease-in-out;
         }
+
         .social-links a:hover {
             color: #ff7eb3;
+        }
+
+        /* Study Plans Section */
+        .study-plans {
+            padding: 40px 20px;
+            background-color: #ffffff;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .study-plans h2 {
+            color: #333;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        .course-list {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .course-item {
+            background: linear-gradient(45deg, #ff7eb3, #ff758c);
+            padding: 20px;
+            border-radius: 10px;
+            color: white;
+            transition: transform 0.3s ease-in-out;
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+        }
+
+        .course-item:hover {
+            transform: scale(1.05);
+        }
+
+        .course-item h3 {
+            margin-bottom: 15px;
+            color: #ffd700;
+            font-size: 1.4rem;
+        }
+
+        .course-item p {
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+        }
+
+        /* Media Queries */
+        @media screen and (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background-color: #333;
+                padding: 20px 0;
+                flex-direction: column;
+                text-align: center;
+                margin-top: 0;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 15px 0;
+            }
+
+            .nav-links a {
+                color: white;
+            }
+
+            .nav-links a:hover {
+                color: #ff7eb3;
+            }
+
+            .hero-content {
+                font-size: 32px;
+            }
+
+            .course-item {
+                min-width: 100%;
+                margin: 10px 0;
+            }
+
+            .about h2 {
+                font-size: 2rem;
+            }
+
+            .about-content {
+                padding: 0 15px;
+            }
+
+            .about-content p {
+                font-size: 1rem;
+            }
+
+            .contact-info {
+                padding: 0 15px;
+            }
+        }
+
+        @media screen and (max-width: 480px) {
+            .hero-content {
+                font-size: 24px;
+            }
+
+            .whatsapp-btn {
+                padding: 12px 24px;
+                font-size: 16px;
+            }
         }
     </style>
 </head>
@@ -105,10 +398,13 @@
             <img src="logo.png" alt="Apex Logo" class="logo">
             <span class="logo-text">Apex Education Center</span>
         </div>
+        <div class="hamburger" onclick="toggleMenu()">
+            <i class="fa fa-bars"></i>
+        </div>
         <ul class="nav-links">
-            <li><a href="#home">Home</a></li>
+            <li><a href="#" onclick="scrollToTop()">Home</a></li>
             <li><a href="#about">About</a></li>
-            <li><a href="#study-plans">Study Plans</a></li> <!-- Updated Name & Link -->
+            <li><a href="#study-plans">Study Plans</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
@@ -127,12 +423,12 @@
     <h2>Why Apex Education Center is Different</h2>
     <div class="about-content">
         <p>
-            🚀 <strong>Education Reimagined!</strong> At <strong>Apex Education Center</strong>, we don’t just teach—we <strong>ignite curiosity!</strong>  
-            Our students don’t just <strong>read theories</strong>, they <strong>bring them to life</strong> through <strong>cutting-edge experiments</strong> in <strong>physics and chemistry</strong>.  
+            🚀 <strong>Education Reimagined!</strong> At <strong>Apex Education Center</strong>, we don't just teach—we <strong>ignite curiosity!</strong>  
+            Our students don't just <strong>read theories</strong>, they <strong>bring them to life</strong> through <strong>cutting-edge experiments</strong> in <strong>physics and chemistry</strong>.  
         </p>
 
         <p>
-            🧪 <strong>Experience Science Hands-On!</strong> Whether it’s exploring <strong>electromagnetism, chemical reactions</strong>, or <strong>gravity-defying concepts</strong>,  
+            🧪 <strong>Experience Science Hands-On!</strong> Whether it's exploring <strong>electromagnetism, chemical reactions</strong>, or <strong>gravity-defying concepts</strong>,  
             Apex allows students to <strong>test, experiment, and discover the world in action</strong>!
         </p>
 
@@ -200,6 +496,65 @@
                         <a href="https://www.instagram.com/apex_education_center?igsh=eTJpNXlvYnBnM3Ni" target="_blank"><i class="fa fa-instagram"></i></a>
         </div>
     </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('active');
+        }
+
+        // Scroll to top function
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Navbar auto-hide functionality
+        let lastScrollTop = 0;
+        let navbarTimeout;
+
+        function handleScroll() {
+            const navbar = document.querySelector('.navbar');
+            const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+            // Clear any existing timeout
+            clearTimeout(navbarTimeout);
+
+            // Show navbar when scrolling
+            navbar.classList.remove('hidden');
+
+            // Set timeout to hide navbar after 10 seconds of no scrolling
+            navbarTimeout = setTimeout(() => {
+                if (currentScroll > 100) { // Only hide if not at the top
+                    navbar.classList.add('hidden');
+                }
+            }, 10000);
+
+            lastScrollTop = currentScroll;
+        }
+
+        // Add scroll event listener
+        window.addEventListener('scroll', handleScroll);
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navLinks = document.querySelector('.nav-links');
+            const hamburger = document.querySelector('.hamburger');
+            
+            if (!hamburger.contains(event.target) && !navLinks.contains(event.target)) {
+                navLinks.classList.remove('active');
+            }
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+    </script>
 
 </body>
 </html>
