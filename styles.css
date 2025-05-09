@@ -185,6 +185,7 @@ body {
 
 
 
+
 /* Contact Section */
 .contact {
     text-align: center;
@@ -279,9 +280,3 @@ footer {
 .social-links img:hover {
     transform: scale(1.2);
 }
-@media (max-width: 600px) {
-    body {
-        font-size: 14px;
-    }
-}
-
